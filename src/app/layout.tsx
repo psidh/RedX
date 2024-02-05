@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const plus_sans = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Twitter',
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`dark:bg-black dark:text-white bg-white :text-black ${inter.className}`}
+        className={`dark:bg-black dark:text-white bg-white :text-black ${plus_sans.className}`}
       >
         {children}
       </body>

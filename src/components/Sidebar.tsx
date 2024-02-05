@@ -10,7 +10,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 export default function Sidebar() {
   return (
     <div>
-      <div className='flex flex-col justify-between items-center py-12 w-[25%] h-[100vh] border-r  border-[#515151]'>
+      <div className='flex flex-col justify-between items-center px-8  py-12 h-[100vh] border-r  border-[#515151]'> 
         <div className='sidebar1'>
           <div className='element space-x-8'>
             <GoHomeFill className='text-3xl' /> <p>Home</p>
@@ -35,9 +35,9 @@ export default function Sidebar() {
           </button>
         </div>
         <div className='sidebar2'>
-          <img src='/profile.jpg' alt='Profile Icon' className='w-8 h-8' />
+          <img src='/profile.jpg' alt='Profile Icon' className='w-10 h-10' />
           <div>
-            <p>Dhananjaya</p>
+            <p className='text-md'>Dhananjaya</p>
             <p className='text-md text-[#7d7d7d]'>@dhananjay</p>
           </div>
           <BsThreeDotsVertical />

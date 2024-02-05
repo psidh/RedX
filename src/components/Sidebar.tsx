@@ -9,8 +9,8 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export default function Sidebar() {
   return (
-    <div>
-      <div className='flex flex-col justify-between items-center px-8  py-12 h-[100vh] border-r  border-[#515151]'> 
+    <div className='w-[25%]'>
+      <div className='flex flex-col justify-between items-center px-8  py-12 h-[100vh] border-r  border-[#515151]'>
         <div className='sidebar1'>
           <div className='element space-x-8'>
             <GoHomeFill className='text-3xl' /> <p>Home</p>

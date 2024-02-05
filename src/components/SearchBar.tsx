@@ -2,7 +2,7 @@ import { IoSearch } from 'react-icons/io5';
 import TrendingBox from './TrendingBox';
 export default function SearchBar() {
   return (
-    <div>
+    <div className='w-[30%]'>
       <div className='flex flex-col justify-start items-start py-6 px-8 h-[100vh]  border-l  border-[#515151]'>
         <div className='search-input-bar'>
           <input

@@ -21,11 +21,11 @@ export default function RootLayout({
       <body
         className={`dark:bg-black dark:text-white bg-white :text-black ${plus_sans.className} flex justify-between`}
       >
-        <div className='w-[25%]'>
+        <div className='w-[20%]'>
           <Sidebar />
         </div>
-        <div className='w-[45%]'>{children}</div>
-        <div className='w-[30%]'>
+        <div className='w-[52%]'>{children}</div>
+        <div className='w-[28%]'>
           <SearchBar />
         </div>
       </body>

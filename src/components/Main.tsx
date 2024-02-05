@@ -1,4 +1,5 @@
-import TitleBox from './TitleBox';
+import TitleBox from './Home/TitleBox';
+import TweetBox from './TweetBox';
 
 export default function Main() {
   return (
@@ -6,6 +7,7 @@ export default function Main() {
       <div className='flex flex-col justify-start items-start '>
         <div className='w-full'>
           <TitleBox params={'Home'} />
+          <TweetBox />
         </div>
       </div>
     </div>

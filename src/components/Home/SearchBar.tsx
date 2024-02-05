@@ -1,5 +1,5 @@
 import { IoSearch } from 'react-icons/io5';
-import TrendingBox from './TrendingBox';
+import TrendingBox from './Trending';
 export default function SearchBar() {
   return (
     <div className='w-[30%]'>
@@ -8,7 +8,7 @@ export default function SearchBar() {
           <input
             type='text'
             title='search'
-            className='bg-[#313131] pl-4  focus:outline-none'
+            className='bg-[#313131] pl-4  focus:outline-none w-full'
             placeholder='Search...'
           />
           <IoSearch className='mr-2 text-xl' />

@@ -28,4 +28,5 @@
   .trending-box {
     @apply p-6 bg-[#313131] flex flex-col items-start justify-start rounded-2xl w-full;
   }
+
 }

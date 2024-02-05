@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { GoHomeFill } from 'react-icons/go';
 import { IoSearch } from 'react-icons/io5';
@@ -6,10 +7,16 @@ import { FaRegBookmark } from 'react-icons/fa';
 import { IoMdPeople } from 'react-icons/io';
 import { FaUser } from 'react-icons/fa6';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import { useRouter } from 'next/navigation';
 
 export default function Sidebar() {
+  const router = useRouter();
+
+  const profilePush = () => {
+    router.push('/profile');
+  };
   return (
-    <div className='w-[25%]'>
+    <div>
       <div className='flex flex-col justify-between items-center px-8  py-12 h-[100vh] border-r  border-[#515151]'>
         <div className='sidebar1'>
           <div className='element space-x-8'>
@@ -27,7 +34,7 @@ export default function Sidebar() {
           <div className='element space-x-8'>
             <IoMdPeople className='text-3xl' /> <p>Communities</p>
           </div>
-          <div className='element space-x-8'>
+          <div onClick={profilePush} className='element space-x-8'>
             <FaUser className='text-3xl' /> <p>Profile</p>
           </div>
           <button className='w-full bg-blue-500 hover:bg-white text-center font-bold text-md hover:text-black py-3 mt-2 px-8 rounded-full transition-all duration-150'>

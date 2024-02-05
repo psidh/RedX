@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
+import Sidebar from '@/components/Home/Sidebar';
+import SearchBar from '@/components/Home/SearchBar';
 
-const plus_sans = Plus_Jakarta_Sans({ subsets: ['latin'] });
+const plus_sans = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Twitter',
@@ -17,9 +19,15 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`dark:bg-black dark:text-white bg-white :text-black ${plus_sans.className}`}
+        className={`dark:bg-black dark:text-white bg-white :text-black ${plus_sans.className} flex justify-between`}
       >
-        {children}
+        <div className='w-[25%]'>
+          <Sidebar />
+        </div>
+        <div className='w-[45%]'>{children}</div>
+        <div className='w-[30%]'>
+          <SearchBar />
+        </div>
       </body>
     </html>
   );

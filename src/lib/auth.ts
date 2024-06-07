@@ -1,0 +1,39 @@
+import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
+
+export const NEXT_AUTH_CONFIG = {
+  providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+  ],
+  secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    redirect: ({ url, baseUrl }: any) => {
+      // Allows relative callback URLs
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
+    },
+    jwt: async ({ user, token }: any) => {
+      if (user) {
+        token.uid = user.id;
+      }
+
+      return token;
+    },
+    session: ({ session, token, user }: any) => {
+      if (session.user) {
+        session.user.id = token.uid;
+        session.user.googleImage = token.picture;
+      }
+      return session;
+    },
+  },
+};

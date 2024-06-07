@@ -1,4 +1,4 @@
-import Profile from '@/components/Profile/Profile';
+import Profile from '@/components/Profile';
 export default function page({ params } : {params: {id: string}}) {
   return (
     <div>

@@ -1,11 +1,13 @@
 import React from 'react';
 import { IoBalloon } from 'react-icons/io5';
 import { IoCalendarOutline } from 'react-icons/io5';
-import TitleBox from '../Home/TitleBox';
+import TitleBox from './Home/TitleBox';
+import { getServerSession } from "next-auth";
 
 export default function Profile({ params }: { params: String }) {
   const name = params.charAt(0).toUpperCase() + params.slice(1);
-
+  const session = getServerSession();
+  
   return (
     <div>
       <TitleBox params={'Profile'} />

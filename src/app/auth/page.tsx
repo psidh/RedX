@@ -11,9 +11,9 @@ export default function page() {
       </a>
       <a
         href="/auth/signup"
-        className="py-2 bg-neutral-800 px-4 w-[20%]  rounded-full"
+        className="py-2 bg-neutral-800 px-4 rounded-full w-[20%] text-center"
       >
-        SignIn
+        SignUp
       </a>
     </div>
   );

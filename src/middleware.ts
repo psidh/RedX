@@ -4,22 +4,28 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
-  const isPublicPath = path === "/api/auth/signin";
+  const isPublicPath =
+    path === "/auth" || path === "/api/auth/signin" || path === "/auth/signup";
 
   const token = request.cookies.get("next-auth.session-token")?.value || "";
-  
-
-  // const afterLoginPath = path === '/dashboard/view' ;
 
   if (isPublicPath && token !== "") {
-    return NextResponse.redirect(new URL("/", request.nextUrl));
+    return NextResponse.redirect(new URL("/home", request.nextUrl));
   }
 
   if (!isPublicPath && token === "") {
-    return NextResponse.redirect(new URL("/api/auth/signin", request.nextUrl));
+    return NextResponse.redirect(new URL("/auth", request.nextUrl));
   }
 }
 
 export const config = {
-  matcher: ["/", "/api/auth/signin", "/signup", "/profile", "/verifyemail"],
+  matcher: [
+    "/home",
+    "/api/auth/signin",
+    "/auth",
+    "/auth/signup",
+    "/profile",
+    "/verify",
+    "/",
+  ],
 };

@@ -13,19 +13,20 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  username String  @unique
-  password String
-  tweets   Tweet[]
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  username   String   @unique
+  dateJoined DateTime @default(now())
+  tweets     Tweet[]
 }
 
 model Tweet {
-  id      Int      @id @default(autoincrement())
-  userId  Int
-  data    String
-  user    User     @relation(fields: [userId], references: [id])
-  date    DateTime @default(now())
-  deleted Boolean  @default(false)
-
-  @@index([userId])
+  id        String   @id @default(uuid())
+  content   String
+  date      DateTime @default(now())
+  likeCount Int      @default(0)
+  comment   Int      @default(0)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
 }

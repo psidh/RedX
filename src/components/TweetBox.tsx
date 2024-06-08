@@ -3,7 +3,7 @@ import { NEXT_AUTH_CONFIG } from "@/lib/auth";
 
 export default async function TweetBox() {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
-  const url = "/profile/" + session?.user?.id;
+  const url = "/home/profile/" + session?.user?.id;
 
   return (
     <a className="flex justify-between items-start p-4 w-full border-b border-neutral-800/80" href={url}>

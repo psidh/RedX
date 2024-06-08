@@ -8,7 +8,7 @@ import { NEXT_AUTH_CONFIG } from "@/lib/auth";
 
 export default async function Sidebar() {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
-  const url = "/profile/" + session?.user?.id;
+  const url = "/home/profile/" + session?.user?.id;
 
   return (
     <div>

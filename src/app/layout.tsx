@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Home/Sidebar";
-import SearchBar from "@/components/Home/SearchBar";
 import { Providers } from "./providers";
+import SearchBar from "@/components/Home/SearchBar";
+import Sidebar from "@/components/Home/Sidebar";
 
 const plus_sans = Inter({ subsets: ["latin"] });
 

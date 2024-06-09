@@ -2,16 +2,27 @@ import { NextResponse, NextRequest } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-
 export async function GET(req: NextRequest) {
   try {
-    const { userId } = await req.json();
+    const searchParams = req.nextUrl.searchParams;
+    console.log(searchParams.get("userId"));
+    let userId = searchParams.get("userId");
+  
+    
+
+    if (!userId) {
+      return NextResponse.json(
+        { error: "userId is required" },
+        { status: 400 }
+      );
+    }
+
     const tweets = await prisma.tweet.findMany({
       where: {
         userId: String(userId),
       },
     });
-    console.log(tweets);
+    
     return NextResponse.json(tweets);
   } catch (error) {
     console.error("Error fetching tweets:", error);
@@ -24,19 +35,31 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const { userId, content } = await req.json();
-    if (!userId || !content) {
+    const { email, content } = await req.json();
+    if (!email || !content) {
       return NextResponse.json(
-        { error: "userId and content are required" },
+        { error: "email and content are required" },
         { status: 400 }
       );
     }
+
+    const user = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
     const tweet = await prisma.tweet.create({
       data: {
         content,
-        userId,
+        userId: user.email,
       },
     });
+
     console.log(tweet);
     return NextResponse.json(tweet, { status: 201 });
   } catch (error) {

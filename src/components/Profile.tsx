@@ -14,7 +14,7 @@ export default async function ProfileBar() {
         />
         <div>
           <p className="text-md">{session.data?.user?.name}</p>
-          <p className="text-md text-[#7d7d7d]">@{session?.user?.id}</p>
+          <p className="text-md text-[#7d7d7d]">@{session?.user?.email}</p>
         </div>
       </a>
     </div>

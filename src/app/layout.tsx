@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-import SearchBar from "@/components/Home/SearchBar";
-import Sidebar from "@/components/Home/Sidebar";
-
+import { Toaster } from "react-hot-toast";
 const plus_sans = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,7 +20,10 @@ export default function RootLayout({
       <body
         className={`dark:bg-black dark:text-white bg-white text-black ${plus_sans.className} `}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Toaster />
+          {children}
+        </Providers>
       </body>
     </html>
   );

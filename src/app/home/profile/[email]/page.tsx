@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import { NEXT_AUTH_CONFIG } from "@/lib/auth";
 import Tweets from "@/components/Tweets";
 
-export default async function Page({ id }: { id: string }) {
+export default async function Page({ email }:any) {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
 
   return (

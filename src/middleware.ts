@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
   const publicPaths = ["/auth", "/api/auth/signin"];
   const isPublicPath = publicPaths.includes(path);
 
-  const token = request.cookies.get("next-auth.session-token")?.value;
+  const token = request.cookies.get("__Secure-next-auth.session-token")?.value;
 
   if (isPublicPath && token) {
     return NextResponse.redirect(new URL("/home", request.nextUrl));

@@ -3,12 +3,13 @@ import { NEXT_AUTH_CONFIG } from "@/lib/auth";
 
 export default async function ProfileBar() {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
+  const imgSrc = session?.user?.image || "";
 
   return (
     <div>
       <a className="sidebar2">
         <img
-          src={session?.user?.image}
+          src={imgSrc}
           alt="Profile Icon"
           className="w-10 h-10 rounded-full"
         />

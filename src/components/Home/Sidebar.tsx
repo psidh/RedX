@@ -10,6 +10,7 @@ import { signOut } from "next-auth/react";
 export default async function Sidebar() {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
   const url = "/home/profile/email?" + session?.user?.email;
+  const imgSrc = session?.user?.image || "";
 
   return (
     <div>
@@ -40,7 +41,7 @@ export default async function Sidebar() {
         </div>
         <a className="sidebar2" href={url}>
           <img
-            src={session?.user?.image}
+            src={imgSrc}
             alt="Profile Icon"
             className="w-10 h-10 rounded-full"
           />

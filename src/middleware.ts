@@ -4,29 +4,20 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
-  const isPublicPath =
-    path === "/auth" || path === "/api/auth/signin" || path === "/auth/signup";
+  const publicPaths = ["/auth", "/api/auth/signin", "/auth/signup"];
+  const isPublicPath = publicPaths.includes(path);
 
-  const token = request.cookies.get("next-auth.session-token")?.value || "";
-  
+  const token = request.cookies.get("next-auth.session-token")?.value;
 
-  if (isPublicPath && token !== "") {
+  if (isPublicPath && token) {
     return NextResponse.redirect(new URL("/home", request.nextUrl));
   }
 
-  if (!isPublicPath && (token === "" || token == undefined)) {
+  if (!isPublicPath && !token) {
     return NextResponse.redirect(new URL("/auth", request.nextUrl));
   }
 }
 
 export const config = {
-  matcher: [
-    "/home",
-    "/api/auth/signin",
-    "/auth",
-    "/auth/signup",
-    "/profile",
-    "/verify",
-    "/",
-  ],
+  matcher: ["/home", "/api/auth/signin", "/auth", "/auth/signup", "/profile", "/"],
 };

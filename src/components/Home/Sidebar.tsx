@@ -4,7 +4,6 @@ import { IoNotificationsOutline } from "react-icons/io5";
 import { FaRegBookmark } from "react-icons/fa";
 import { IoMdPeople } from "react-icons/io";
 import { getServerSession } from "next-auth";
-import { FiUser } from "react-icons/fi";
 import { NEXT_AUTH_CONFIG } from "@/lib/auth";
 import Image from "next/image";
 import { PrismaClient } from "@prisma/client";
@@ -14,14 +13,14 @@ export default async function Sidebar() {
   const url = "/home/profile/email?" + session?.user?.email;
   const imgSrc = session?.user?.image || "";
   const prisma = new PrismaClient();
+
+  const email = session.user.email;
+
   const user = await prisma.user.findUnique({
     where: {
-      email: session?.user?.email,
+      email: email,
     },
   });
-
-  const userEmail = await user?.email;
-  
 
   return (
     <div>
@@ -43,15 +42,16 @@ export default async function Sidebar() {
           <a href="/communities" className="element space-x-8">
             <IoMdPeople className="text-3xl" /> <p>Communities</p>
           </a>
+          <a href="/api/auth/signout" className="element space-x-8 w-full">
+            sign out
+          </a>
 
-          {userEmail ? (
-           <p className="text-lg flex items-center justify-center w-full my-4 text-green-500">
-              SignUp Complete
-           </p>
+          {user ? (
+            <div>Verified</div>
           ) : (
-            <a href="/complete-the-signup" className="element space-x-8">
-              <FiUser className="text-3xl" /> <p>Complete SignUp</p>
-            </a>
+            <div>
+              <a href="/complete-signup">Complete SignUp</a>
+            </div>
           )}
 
           <a

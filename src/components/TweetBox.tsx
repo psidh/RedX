@@ -1,24 +1,57 @@
-import { getServerSession } from "next-auth";
-import { NEXT_AUTH_CONFIG } from "@/lib/auth";
+"use client";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
+export default function TweetBox() {
+  const session = useSession();
+  const imgSrc = session?.data?.user?.image || "";
+  const url = "/home/profile/email" + session?.data?.user?.email;
 
-export default async function TweetBox() {
-  const session = await getServerSession(NEXT_AUTH_CONFIG);
-  const imgSrc = session?.user?.image || "";
-  const url = "/home/profile/" + session?.user?.id;
+  const [content, setContent] = useState("");
+  const router = useRouter();
+
+  const handleTweetSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.loading("tweeting...");
+
+    const email = session?.data?.user?.email;
+
+    const response = await fetch("/api/tweet", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, content }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // Reset the content field and navigate to home or show success message
+      setContent("");
+      toast.dismiss();
+      toast.success("Tweet posted successfully");
+      router.push(`/home/profile/email?${session.data?.user?.email}`); // Redirect to home or another page
+    } else {
+      toast.dismiss();
+      toast(data.error || "Failed to post tweet");
+      toast.dismiss();
+    }
+  };
 
   return (
-    <a
-      className="flex justify-between items-start p-4 w-full border-b border-neutral-800/80"
-      href={url}
-    >
-      <Image
-        src={imgSrc}
-        alt="Profile Icon"
-        width={96}
-        height={96}
-        className="w-16 h-16 rounded-full border-4 border-black"
-      />
+    <div className="flex justify-between items-start p-4 w-full border-b border-neutral-800/80">
+      <a title="user" href={url}>
+        <Image
+          src={imgSrc}
+          alt="Profile Icon"
+          width={96}
+          height={96}
+          className="w-16 h-16 rounded-full border-4 border-black"
+        />
+      </a>
       <div className="flex flex-col justify-between w-[90%]">
         <textarea
           title="tweet"
@@ -28,16 +61,19 @@ export default async function TweetBox() {
           rows={2}
           className="pl-4  w-full focus:outline-none bg-black"
           placeholder="Type Something..."
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         />
         <button
           className="bg-blue-500 w-[25%]
           hover:bg-blue-500/90 text-center font-bold text-md 
            py-2 mt-2 px-8 rounded-full
          transition-all duration-150"
+          onClick={handleTweetSubmit}
         >
           Tweet
         </button>
       </div>
-    </a>
+    </div>
   );
 }

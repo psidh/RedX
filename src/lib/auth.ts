@@ -5,16 +5,19 @@ export const NEXT_AUTH_CONFIG = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      
     }),
+    
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    redirect: ({ url, baseUrl }: any) => {
+    redirect: ({ url, baseUrl }: any) => {      
       // Redirect to /complete-the-signup after sign-in
-      if (url.startsWith("/complete-the-signup")) return `${baseUrl}${url}`;
-      // Allows callback URLs on the same origin
-      if (new URL(url).origin === baseUrl) return url;
-      return `${baseUrl}/complete-the-signup`;
+      // if (url.startsWith("/")) return `${baseUrl}/complete-the-signup`;
+      // // Allows callback URLs on the same origin
+      // if (new URL(url).origin === baseUrl) return url;
+
+      return `${baseUrl}/auth`;
     },
     jwt: async ({ user, token }: any) => {
       if (user) {

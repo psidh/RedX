@@ -14,7 +14,7 @@ export default async function ProfileBar() {
           alt="Profile Icon"
           width={40}
           height={40}
-          className="rounded-full"
+          className="rounded-full object-cover"
         />
         <div>
           <p className="text-md">{session?.user?.name}</p>

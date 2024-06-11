@@ -49,10 +49,10 @@ export default function TweetBox() {
           alt="Profile Icon"
           width={96}
           height={96}
-          className="w-16 h-16 rounded-full border-4 border-black"
+          className="rounded-full border-4 border-black object-cover"
         />
       </a>
-      <div className="flex flex-col justify-between w-[90%]">
+      <div className="flex flex-col justify-between w-full">
         <textarea
           title="tweet"
           name="tweet"
@@ -67,7 +67,7 @@ export default function TweetBox() {
         <button
           className="bg-blue-500 w-[25%]
           hover:bg-blue-500/90 text-center font-bold text-md 
-           py-2 mt-2 px-8 rounded-full
+           py-2 mt-2 px-4 rounded-full
          transition-all duration-150"
           onClick={handleTweetSubmit}
         >

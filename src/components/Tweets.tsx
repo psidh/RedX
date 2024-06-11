@@ -65,7 +65,7 @@ export default function Tweets() {
                     alt="Profile Icon"
                     width={32}
                     height={32}
-                    className="rounded-full"
+                    className="rounded-full object-cover"
                   />
                 </div>
                 <h1 className="text-lg font-semibold">

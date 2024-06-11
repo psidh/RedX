@@ -25,7 +25,6 @@ export default async function Sidebar() {
   });
 
   return (
-    <div>
       <div className="flex flex-col justify-between items-center py-12 h-[100vh] border-r border-neutral-800/80">
         <div className="sidebar1">
           <a href="/home" className="element space-x-8">
@@ -85,6 +84,5 @@ export default async function Sidebar() {
           </div>
         </a>
       </div>
-    </div>
   );
 }

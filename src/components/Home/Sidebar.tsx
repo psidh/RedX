@@ -31,7 +31,10 @@ export default async function Sidebar() {
           <a href="/communities" className="element space-x-8">
             <IoMdPeople className="text-3xl" /> <p>Communities</p>
           </a>
-          <a href="/home/post" className="element inline-flex items-center justify-center bg-blue-500 hover:bg-white w-full font-bold text-md hover:text-black py-3 mt-2 px-8 rounded-full transition-all duration-150">
+          <a
+            href="/home/post"
+            className="element inline-flex items-center justify-center bg-blue-500 hover:bg-white w-full font-bold text-md hover:text-black py-3 mt-2 px-8 rounded-full transition-all duration-150"
+          >
             Post
           </a>
         </div>
@@ -43,7 +46,7 @@ export default async function Sidebar() {
           />
           <div>
             <p className="text-md">{session?.user?.name}</p>
-            <p className="text-sm text-[#7d7d7d]">@{session?.user?.email}</p>
+            <p className="text-md text-neutral-500 hover:text-blue-600">View Profile</p>
           </div>
         </a>
       </div>

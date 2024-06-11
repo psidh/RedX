@@ -7,8 +7,6 @@ export async function GET(req: NextRequest) {
     const searchParams = req.nextUrl.searchParams;
     console.log(searchParams.get("userId"));
     let userId = searchParams.get("userId");
-  
-    
 
     if (!userId) {
       return NextResponse.json(
@@ -22,7 +20,7 @@ export async function GET(req: NextRequest) {
         userId: String(userId),
       },
     });
-    
+
     return NextResponse.json(tweets);
   } catch (error) {
     console.error("Error fetching tweets:", error);

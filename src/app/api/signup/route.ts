@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
         dateJoined: new Date(),
       },
     });
-    
+
     return NextResponse.json(newUser, { status: 201 });
   } catch (error) {
     console.error("Error creating user:", error);

@@ -31,7 +31,7 @@ const TweetPage = () => {
       setContent("");
       toast.dismiss();
       toast.success("Tweet posted successfully");
-      router.push(`/home/profile,${session.data?.user?.email}`); // Redirect to home or another page
+      router.push(`/home/profile/email?${session.data?.user?.email}`); // Redirect to home or another page
     } else {
       toast(data.error || "Failed to post tweet");
     }

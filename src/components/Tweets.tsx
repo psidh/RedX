@@ -40,6 +40,7 @@ export default function Tweets() {
           toast.error("Server is down");
         } finally {
           setLoading(false);
+          toast.dismiss();
         }
       };
       fetchTweets();

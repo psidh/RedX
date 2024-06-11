@@ -5,8 +5,10 @@ import { FaRegBookmark } from "react-icons/fa";
 import { IoMdPeople } from "react-icons/io";
 import { getServerSession } from "next-auth";
 import { NEXT_AUTH_CONFIG } from "@/lib/auth";
+import { LuLogOut } from "react-icons/lu";
 import Image from "next/image";
 import { PrismaClient } from "@prisma/client";
+import { IoMdCheckmarkCircle } from "react-icons/io";
 
 export default async function Sidebar() {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
@@ -42,15 +44,23 @@ export default async function Sidebar() {
           <a href="/communities" className="element space-x-8">
             <IoMdPeople className="text-3xl" /> <p>Communities</p>
           </a>
-          <a href="/api/auth/signout" className="element space-x-8 w-full">
-            sign out
+          <a href="/api/auth/signout" className="element space-x-8">
+            <LuLogOut className="text-3xl" />
+            <p>Sign Out</p>
           </a>
 
           {user ? (
-            <div>Verified</div>
+            <div className="element hover:bg-black cursor-default space-x-8">
+              <IoMdCheckmarkCircle className="text-3xl text-blue-500" />
+              <p className="">
+                Verified
+              </p>
+            </div>
           ) : (
             <div>
-              <a href="/complete-signup">Complete SignUp</a>
+              <a href="/complete-signup" className="element space-x-8">
+                Complete SignUp
+              </a>
             </div>
           )}
 

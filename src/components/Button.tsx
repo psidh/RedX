@@ -21,7 +21,7 @@ export default function Button({
       style={{ pointerEvents: disabled ? "none" : "auto" }}
     >
       {name === "Google" ? <FaGoogle /> : <FaGithub />}
-      <p className="text-white ml-2">SignIn with {name}</p>
+      <p className=" ml-2">SignIn with {name}</p>
     </div>
   );
 }

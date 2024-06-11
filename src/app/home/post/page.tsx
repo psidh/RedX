@@ -38,7 +38,7 @@ const TweetPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center">
+    <div className="min-h-screen   flex items-center justify-center">
       <form
         onSubmit={handleTweetSubmit}
         className="bg-neutral-900 p-8 rounded-lg shadow-md w-96"
@@ -59,7 +59,7 @@ const TweetPage = () => {
         </div>
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded text-white font-bold"
+          className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded  font-bold"
         >
           Tweet
         </button>

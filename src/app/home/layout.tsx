@@ -7,9 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div
-      className={`dark:bg-black dark:text-white bg-white :text-black  flex justify-between`}
-    >
+    <div className={`dark: dark:  :  flex justify-between`}>
       <div className="w-[20%]">
         <Sidebar />
       </div>

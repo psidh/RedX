@@ -40,7 +40,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black text-white">
+    <div className="flex items-center justify-center min-h-screen  ">
       <form
         onSubmit={handleSignup}
         className="bg-neutral-900 p-8 rounded-lg shadow-md w-80"
@@ -60,7 +60,7 @@ const Signup = () => {
         </div>
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded text-white font-bold"
+          className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded  font-bold"
         >
           Sign Up
         </button>

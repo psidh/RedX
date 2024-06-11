@@ -5,7 +5,7 @@
 @layer {
   .sidebar1 .element {
     @apply flex justify-start items-start px-4 py-2
-     rounded-full bg-black  cursor-pointer my-1  
+     rounded-full   cursor-pointer my-1  
      hover:bg-[#313131] transition-all duration-300 ease-in-out;
   }
 
@@ -17,7 +17,7 @@
   }
 
   .sidebar2 {
-    @apply flex rounded-full px-5 py-2 w-[82%] bg-black cursor-pointer hover:bg-[#313131] 
+    @apply flex rounded-full px-5 py-2 w-[82%]  cursor-pointer hover:bg-[#313131] 
     transition-all duration-300 ease-in-out items-center justify-between space-x-2;
   }
 

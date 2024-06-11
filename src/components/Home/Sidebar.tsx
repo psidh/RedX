@@ -5,7 +5,7 @@ import { FaRegBookmark } from "react-icons/fa";
 import { IoMdPeople } from "react-icons/io";
 import { getServerSession } from "next-auth";
 import { NEXT_AUTH_CONFIG } from "@/lib/auth";
-import { signOut } from "next-auth/react";
+import Image from "next/image";
 
 export default async function Sidebar() {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
@@ -14,9 +14,9 @@ export default async function Sidebar() {
 
   return (
     <div>
-      <div className="flex flex-col justify-between items-center py-12 h-[100vh] border-r  border-neutral-800/80">
+      <div className="flex flex-col justify-between items-center py-12 h-[100vh] border-r border-neutral-800/80">
         <div className="sidebar1">
-          <a href="/" className="element space-x-8">
+          <a href="/home" className="element space-x-8">
             <GoHomeFill className="text-3xl" />
             <p>Home</p>
           </a>
@@ -34,20 +34,24 @@ export default async function Sidebar() {
           </a>
           <a
             href="/home/post"
-            className="element inline-flex items-center justify-center bg-blue-500 hover:bg-white w-full font-bold text-md hover:text-black py-3 mt-2 px-8 rounded-full transition-all duration-150"
+            className="element inline-flex items-center justify-center bg-blue-500 hover: w-full font-bold text-md hover: py-3 mt-2 px-8 rounded-full transition-all duration-150"
           >
             Post
           </a>
         </div>
         <a className="sidebar2" href={url}>
-          <img
+          <Image
             src={imgSrc}
             alt="Profile Icon"
+            width={40}
+            height={40}
             className="w-10 h-10 rounded-full"
           />
           <div>
             <p className="text-md">{session?.user?.name}</p>
-            <p className="text-md text-neutral-500 hover:text-blue-600">View Profile</p>
+            <p className="text-md text-neutral-500 hover:text-blue-600">
+              View Profile
+            </p>
           </div>
         </a>
       </div>

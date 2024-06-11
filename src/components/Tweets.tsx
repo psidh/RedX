@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { FiCalendar } from "react-icons/fi";
 import { FiHeart } from "react-icons/fi";
 import { LuMessageSquare } from "react-icons/lu";
+import Image from "next/image";
 
 interface Tweet {
   id: string;
@@ -19,7 +20,7 @@ interface Tweet {
 export default function Tweets() {
   const session = useSession();
   const imgSrc = session.data?.user?.image || "";
-  const sessionEmail = useSession().data?.user?.email;
+  const sessionEmail = session.data?.user?.email;
   const [tweets, setTweets] = useState<Tweet[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -55,63 +56,36 @@ export default function Tweets() {
         )}
         <div className="my-6">
           {tweets.map((tweet) => (
-            <>
-              <div key={tweet.id} className="p-4 mb-4 rounded-md shadow">
-                <div className="flex items-center justify-start space-x-4">
-                  <div>
-                    <img
-                      src={imgSrc}
-                      alt="Profile Icon"
-                      className="w-8 h-8 rounded-full"
-                    />
-                  </div>
-                  <h1 className="text-lg font-semibold">
-                    {session.data?.user?.name}
-                  </h1>
+            <div key={tweet.id} className="p-4 mb-4 rounded-md shadow">
+              <div className="flex items-center justify-start space-x-4">
+                <div>
+                  <Image
+                    src={imgSrc}
+                    alt="Profile Icon"
+                    width={32}
+                    height={32}
+                    className="rounded-full"
+                  />
                 </div>
-                <p className="text-neutral-500 my-4 text-xl">{`ascascas`}</p>
-                <div className="tweet-box">
-                  <div className="tweet space-x-2">
-                    <FiCalendar />
-                    <p>date</p>
-                  </div>
-                  <div className="tweet space-x-2">
-                    <FiHeart /> <p>12</p>
-                  </div>
-                  <div className="tweet space-x-2">
-                    <LuMessageSquare />
-                  </div>
+                <h1 className="text-lg font-semibold">
+                  {session.data?.user?.name}
+                </h1>
+              </div>
+              <p className="text-neutral-500 my-4 text-xl">{tweet.content}</p>
+              <div className="tweet-box">
+                <div className="tweet space-x-2">
+                  <FiCalendar />
+                  <p>{new Date(tweet.date).toLocaleString()}</p>
+                </div>
+                <div className="tweet space-x-2">
+                  <FiHeart /> <p>{tweet.likeCount}</p>
+                </div>
+                <div className="tweet space-x-2">
+                  <LuMessageSquare />
+                  <p>{tweet.comment}</p>
                 </div>
               </div>
-              <div key={tweet.id} className="tweet-box-large">
-                <div className="flex items-center justify-start space-x-4">
-                  <div>
-                    <img
-                      src={imgSrc}
-                      alt="Profile Icon"
-                      className="w-8 h-8 rounded-full"
-                    />
-                  </div>
-                  <h1 className="text-lg font-semibold">
-                    {session.data?.user?.name}
-                  </h1>
-                </div>
-                <p className="text-neutral-500 my-4 text-xl">{tweet.content}</p>
-                <div className="tweet-box">
-                  <div className="tweet space-x-2">
-                    <FiCalendar />
-                    <p>{new Date(tweet.date).toLocaleString()}</p>
-                  </div>
-                  <div className="tweet space-x-2">
-                    <FiHeart /> <p>{tweet.likeCount}</p>
-                  </div>
-                  <div className="tweet space-x-2">
-                    <LuMessageSquare />
-                    <p>{tweet.comment}</p>
-                  </div>
-                </div>
-              </div>
-            </>
+            </div>
           ))}
         </div>
       </div>

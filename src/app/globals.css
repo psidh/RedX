@@ -2,38 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-.sidebar1 {
-  @apply flex justify-start items-start px-4 py-2
+@layer {
+  .sidebar1 .element {
+    @apply flex justify-start items-start px-4 py-2
      rounded-full   cursor-pointer my-1  
      hover:bg-[#313131] transition-all duration-300 ease-in-out;
-}
+  }
 
-.element {
-  @apply flex justify-start items-start px-4 py-2
-  rounded-full   cursor-pointer my-1  
-  hover:bg-[#313131] transition-all duration-300 ease-in-out;
-}
-.sidebar1 p {
-  @apply text-2xl;
-}
+  .sidebar1 p {
+    @apply text-2xl;
+  }
 
-.sidebar1 .element p {
-  @apply text-xl;
-}
+  .sidebar1 .element p {
+    @apply text-xl;
+  }
 
-.sidebar2 {
-  @apply flex rounded-full px-5 py-2 w-[82%]  cursor-pointer hover:bg-[#313131] 
+  .sidebar2 {
+    @apply flex rounded-full px-5 py-2 w-[82%]  cursor-pointer hover:bg-[#313131] 
     transition-all duration-300 ease-in-out items-center justify-between space-x-2;
-}
+  }
 
-.search-input-bar {
-  @apply flex justify-between items-center py-3 px-4 rounded-full bg-[#313131] mb-12;
-}
+  .search-input-bar {
+    @apply flex justify-between items-center py-3 px-4 rounded-full bg-[#313131] mb-12;
+  }
 
-.trending-box {
-  @apply p-6 bg-[#313131] flex flex-col items-start justify-start rounded-2xl w-full;
+  .trending-box {
+    @apply p-6 bg-[#313131] flex flex-col items-start justify-start rounded-2xl w-full;
+  }
 }
-
 .tweet {
   @apply inline-flex items-center text-neutral-300  text-lg;
 }

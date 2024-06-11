@@ -52,9 +52,7 @@ export default async function Sidebar() {
           {user ? (
             <div className="element hover:bg-black cursor-default space-x-8">
               <IoMdCheckmarkCircle className="text-3xl text-blue-500" />
-              <p className="">
-                Verified
-              </p>
+              <p className="">Verified</p>
             </div>
           ) : (
             <div>

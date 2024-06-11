@@ -21,6 +21,7 @@ export default async function Sidebar() {
   });
 
   const userEmail = await user?.email;
+  
 
   return (
     <div>
@@ -43,8 +44,10 @@ export default async function Sidebar() {
             <IoMdPeople className="text-3xl" /> <p>Communities</p>
           </a>
 
-          {userEmail === "" ? (
-           <div></div>
+          {userEmail ? (
+           <p className="text-lg flex items-center justify-center w-full my-4 text-green-500">
+              SignUp Complete
+           </p>
           ) : (
             <a href="/complete-the-signup" className="element space-x-8">
               <FiUser className="text-3xl" /> <p>Complete SignUp</p>

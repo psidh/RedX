@@ -5,7 +5,6 @@ const prisma = new PrismaClient();
 export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;
-    console.log(searchParams.get("userId"));
     let userId = searchParams.get("userId");
 
     if (!userId) {
@@ -57,8 +56,6 @@ export async function POST(req: NextRequest) {
         userId: user.email,
       },
     });
-
-    console.log(tweet);
     return NextResponse.json(tweet, { status: 201 });
   } catch (error) {
     console.error("Error posting tweet:", error);
@@ -77,7 +74,6 @@ export async function DELETE(req: NextRequest) {
         id,
       },
     });
-    console.log(tweet);
     return NextResponse.json(tweet);
   } catch (error) {
     console.error("Error deleting tweet:", error);

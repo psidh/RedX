@@ -9,7 +9,7 @@ import { IoMdCheckmarkCircle } from "react-icons/io";
 
 export default async function BottomBar() {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
-  const url = "/home/profile/email?" + session?.user?.email;
+  const url = "/home/profile/" + session?.user?.email;
   const imgSrc = session?.user?.image || "";
   const prisma = new PrismaClient();
 

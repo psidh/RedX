@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 export default function TweetBox() {
   const session = useSession();
   const imgSrc = session?.data?.user?.image || "";
-  const url = "/home/profile/email?" + session?.data?.user?.email;
+  const url = "/home/profile/" + session?.data?.user?.email;
 
   const [content, setContent] = useState("");
   const router = useRouter();
@@ -33,7 +33,7 @@ export default function TweetBox() {
       setContent("");
       toast.dismiss();
       toast.success("Tweet posted successfully");
-      router.push(`/home/profile/email?${session.data?.user?.email}`); // Redirect to home or another page
+      router.push(`/home/profile/${session.data?.user?.email}`); // Redirect to home or another page
     } else {
       toast.dismiss();
       toast(data.error || "Failed to post tweet");

@@ -27,12 +27,11 @@ export default function Tweets() {
   useEffect(() => {
     if (sessionEmail) {
       const fetchTweets = async () => {
-        toast.loading("Getting tweets...");
         setError("");
         try {
           const response = await axios.get(`/api/tweet?userId=${sessionEmail}`);
           setTweets(response.data);
-          toast.success("Retrieved tweets");
+          toast.success("Retrieved posts");
         } catch (err) {
           setError("Server is down");
           toast.error("Server is down");

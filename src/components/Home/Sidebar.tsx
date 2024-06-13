@@ -69,7 +69,7 @@ export default async function Sidebar() {
           Post
         </a>
       </div>
-      <a className="sidebar2" href={url}>
+      <a className="sidebar2 border border-neutral-800" href={url}>
         <Image
           src={imgSrc}
           alt="Profile Icon"

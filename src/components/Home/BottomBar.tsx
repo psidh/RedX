@@ -26,16 +26,16 @@ export default async function BottomBar() {
   prisma.$disconnect();
   return (
     <div className="flex lg:hidden fixed bottom-0 left-0 w-full justify-between items-center mt-12 py-4 px-6 border-t border-neutral-600 bg-black">
-      <a href="/home">
+      <a title="link" href="/home">
         <GoHomeFill className="text-3xl" />
       </a>
-      <a href="/explore">
+      <a title="link" href="/explore">
         <IoSearch className="text-3xl" />
       </a>
-      <a href="/home/post">
+      <a title="link" href="/home/post">
         <BsPlusCircleFill className="text-3xl text-red-500" />
       </a>
-      <a href="/api/auth/signout">
+      <a title="link" href="/api/auth/signout">
         <LuLogOut className="text-3xl" />
       </a>
 

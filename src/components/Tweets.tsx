@@ -94,7 +94,7 @@ export default function Tweets() {
                   <p>{formatDate(new Date(tweet?.date))}</p>
                 </div>
                 <div className="tweet space-x-2 cursor-pointer" onClick={()=> handleLike(tweet.id)}>
-                  <FiHeart /> <p>{tweet.likeCount}</p>
+                  <FiHeart className="hover:text-red-500" /> <p>{tweet.likeCount}</p>
                 </div>
                 <div className="tweet space-x-2">
                   <LuMessageSquare />

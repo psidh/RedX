@@ -42,7 +42,7 @@ export default function Search() {
       </div>
       <div>
         {results ? (
-          <a href={`/home/search/username/${results?.user?.username}`} target="_blank">
+          <a href={`/home/search/${results?.user?.username}`} target="_blank">
             <div className="rounded-xl bg-neutral-800 p-4 flex flex-col items-start justify-start">
               <h1 className="text-xl font-semibold mb-2">
                 @{results.user.username}

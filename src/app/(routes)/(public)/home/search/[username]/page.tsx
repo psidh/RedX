@@ -4,8 +4,15 @@ import { PrismaClient } from "@prisma/client";
 import { FiCalendar } from "react-icons/fi";
 import { formatDate } from "@/lib/formateDate";
 
-export default async function Page({ username }: any) {
+export default async function Page({
+  params,
+}: {
+  params: {
+    username: string;
+  };
+}) {
   const prisma = new PrismaClient();
+  const username = decodeURIComponent(params.username);
   const user = await prisma.user.findFirst({
     where: {
       username: username,

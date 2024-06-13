@@ -27,6 +27,8 @@ export async function GET(req: NextRequest) {
       { error: "Internal Server Error" },
       { status: 500 }
     );
+  } finally {
+    prisma.$disconnect();
   }
 }
 
@@ -63,14 +65,15 @@ export async function POST(req: NextRequest) {
       { error: "Internal Server Error" },
       { status: 500 }
     );
+  } finally {
+    prisma.$disconnect();
   }
 }
 
 export async function DELETE(req: NextRequest) {
   try {
     const { id } = await req.json();
-    
-    
+
     const tweet = await prisma.tweet.findUnique({
       where: { id },
     });
@@ -79,17 +82,21 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: "Tweet not found" }, { status: 404 });
     }
 
-    
     await prisma.tweet.delete({
       where: { id },
     });
 
-    return NextResponse.json({ message: "Tweet deleted successfully" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Tweet deleted successfully" },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Error deleting tweet:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }
     );
+  } finally {
+    prisma.$disconnect();
   }
 }

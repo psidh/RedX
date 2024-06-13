@@ -21,6 +21,8 @@ export default async function BottomBar() {
     },
   });
 
+  await prisma.$disconnect();
+
   prisma.$disconnect();
   return (
     <div className="flex lg:hidden fixed bottom-0 left-0 w-full justify-between items-center mt-12 py-4 px-6 border-t border-neutral-600 bg-black">

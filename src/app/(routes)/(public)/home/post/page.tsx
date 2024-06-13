@@ -38,7 +38,7 @@ const TweetPage = () => {
   };
 
   return (
-    <div className="min-h-screen   flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       <form
         onSubmit={handleTweetSubmit}
         className="bg-neutral-900 p-8 rounded-lg shadow-md w-96"

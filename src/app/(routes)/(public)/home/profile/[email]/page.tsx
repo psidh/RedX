@@ -6,18 +6,18 @@ import { PrismaClient } from "@prisma/client";
 import { FiCalendar } from "react-icons/fi";
 import { formatDate } from "@/lib/formateDate";
 
-export default async function Page({ email }: any) {
+export default async function Page({ params }: { params: { email: string } }) {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
   const imgSrc = session?.user?.image || "";
   const prisma = new PrismaClient();
 
+  const extractedEmail  = decodeURIComponent(params.email);
   const user = await prisma.user.findFirst({
     where: {
-      email: email,
+      email: extractedEmail,
     },
-  });
-
-  prisma.$disconnect();
+  });  
+  await prisma.$disconnect();
 
   return (
     <div className="h-screen">

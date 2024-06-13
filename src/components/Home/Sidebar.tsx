@@ -23,7 +23,7 @@ export default async function Sidebar() {
     },
   });
 
-  prisma.$disconnect();
+  await prisma.$disconnect();
 
   return (
     <div className="fixed top-0 left-0 hidden lg:flex lg:w-[19%] flex-col justify-between items-center py-12 h-[100vh] border-r border-neutral-800/80">
@@ -56,7 +56,7 @@ export default async function Sidebar() {
           </div>
         ) : (
           <div>
-            <a href="/complete-signup" className="element space-x-8">
+            <a href="/home/complete-signup" className="element space-x-8">
               Complete SignUp
             </a>
           </div>

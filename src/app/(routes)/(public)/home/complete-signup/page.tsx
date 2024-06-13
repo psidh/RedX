@@ -43,8 +43,8 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-between p-2 bg-neutral-700 rounded-xl">
-        <h1 className="text-3xl my-4">Complete your SignUp</h1>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <h1 className="text-3xl my-6 font-semibold">Complete your SignUp</h1>
         <form
           onSubmit={handleSignup}
           className="bg-neutral-900 p-8 rounded-lg shadow-md w-80"
@@ -78,9 +78,9 @@ const SignUp = () => {
           </div>
           <button
             type="submit"
-            className={`w-full py-2 px-4 bg-red-500 hover:bg-red-700 rounded font-bold`}
+            className={`w-full mt-4 py-2 px-4 bg-white text-black hover:bg-neutral-700 rounded font-bold`}
           >
-            New User Sign Up
+            Sign Up
           </button>
         </form>
       </div>

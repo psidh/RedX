@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 const plus_sans = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Twitter",
+  title: "RedX",
   description: "Social Media networking site",
 };
 

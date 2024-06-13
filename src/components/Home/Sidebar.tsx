@@ -17,12 +17,13 @@ export default async function Sidebar() {
   const prisma = new PrismaClient();
 
   const email = session.user.email;
-
   const user = await prisma.user.findUnique({
     where: {
       email: email,
     },
   });
+
+  prisma.$disconnect();
 
   return (
     <div className="flex flex-col justify-between items-center py-12 h-[100vh] border-r border-neutral-800/80">

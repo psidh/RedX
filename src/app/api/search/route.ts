@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       if (!user) {
         return NextResponse.json({ error: "User not found", status: 404 });
       }
-  
+      prisma.$disconnect();
       return NextResponse.json({ user, status: 200 });
     } catch (error: any) {
       return NextResponse.json({

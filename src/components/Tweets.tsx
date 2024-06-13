@@ -22,13 +22,11 @@ export default function Tweets() {
   const imgSrc = session.data?.user?.image || "";
   const sessionEmail = session.data?.user?.email;
   const [tweets, setTweets] = useState<Tweet[]>([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
     if (sessionEmail) {
       const fetchTweets = async () => {
-        setLoading(true);
         toast.loading("Getting tweets...");
         setError("");
         try {
@@ -39,7 +37,6 @@ export default function Tweets() {
           setError("Server is down");
           toast.error("Server is down");
         } finally {
-          setLoading(false);
           toast.dismiss();
         }
       };
@@ -57,7 +54,7 @@ export default function Tweets() {
         )}
         <div>
           {tweets.map((tweet) => (
-            <div key={tweet.id} className="p-4 border-b border-neutral-800">
+            <div key={tweet.id} className="p-4 border-b border-r border-neutral-800">
               <div className="flex items-center justify-start space-x-4">
                 <div>
                   <Image

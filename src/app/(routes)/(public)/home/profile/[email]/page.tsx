@@ -16,10 +16,11 @@ export default async function Page({ email }: any) {
   });
 
   const username = user?.username;
+  prisma.$disconnect();
 
   return (
     <div className="h-screen">
-      <div className="relative h-32 xl:h-48 bg-neutral-800/80">
+      <div className="relative h-32 xl:h-48 bg-neutral-800/80 ">
         <Image
           src={imgSrc}
           alt="Profile Icon"
@@ -28,7 +29,7 @@ export default async function Page({ email }: any) {
           className="w-24 h-24 rounded-full object-cover absolute bottom-0 left-4 transform translate-y-1/2 border-4 border-black"
         />
       </div>
-      <div className="p-6 pt-12 border-b border-neutral-800">
+      <div className="p-6 pt-12 border-b border-r border-neutral-800 ">
         <div className="flex flex-col">
           <p className="text-2xl font-bold">{session?.user?.name}</p>
           <p className="text-md text-neutral-500">@{username}</p>

@@ -4,24 +4,25 @@ import { IoSearch } from "react-icons/io5";
 
 export default function Search() {
   const [search, setSearch] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<any>(null);
 
-  useEffect(() => {
-    const fetchResults = async () => {
-      try {
-        if (search) {
-          const res = await fetch(`/api/user?q=${search}`);
-          const data = await res.json();
-          setResults(data);
-          console.log(data);
-        }
-      } catch (error) {
-        console.error("Error fetching search results:", error);
+  const fetchResults = async () => {
+    try {
+      {
+        const res = await fetch(`/api/user`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username: search }),
+        });
+        const data = await res.json();
+        setResults(data);
       }
-    };
-
-    fetchResults();
-  }, [search]);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  };
 
   return (
     <div>
@@ -34,15 +35,23 @@ export default function Search() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <IoSearch className="mr-2 text-2xl cursor-pointer" onClick={() => setSearch(search)} />
+        <IoSearch
+          className="mr-2 text-2xl cursor-pointer"
+          onClick={fetchResults}
+        />
       </div>
       <div>
-        {results.length > 0 && (
-          <ul>
-            {results.map((result, index) => (
-              <li key={index}>{result}</li>
-            ))}
-          </ul>
+        {results ? (
+          <a href={`/home/profile/email?${results.user.email}`} target="_blank">
+            <div className="rounded-xl bg-neutral-800 p-4 flex flex-col items-start justify-start">
+              <h1 className="text-xl font-semibold mb-2">
+                @{results.user.username}
+              </h1>
+              <p>{results.user.email}</p>
+            </div>
+          </a>
+        ) : (
+          <p>No results found</p>
         )}
       </div>
     </div>

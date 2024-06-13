@@ -3,21 +3,25 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 export async function POST(req: NextRequest) {
   try {
-    const { email } = await req.json();
+    const { username } = await req.json();
+    
+    
 
-    if (!email) {
-      return NextResponse.json({ error: "Email not given", status: 411 });
+    if (!username) {
+      return NextResponse.json({ error: "username not given", status: 411 });
     }
 
     const user = await prisma.user.findUnique({
       where: {
-        email: email,
+        username: username,
       },
     });
 
     if (!user) {
       return NextResponse.json({ error: "User not found", status: 404 });
     }
+    console.log(user);
+    
     return NextResponse.json({ user, status: 200 });
   } catch (error: any) {
     return NextResponse.json({

@@ -11,17 +11,17 @@ export default async function Page({ params }: { params: { email: string } }) {
   const imgSrc = session?.user?.image || "";
   const prisma = new PrismaClient();
 
-  const extractedEmail  = decodeURIComponent(params.email);
+  const extractedEmail = decodeURIComponent(params.email);
   const user = await prisma.user.findFirst({
     where: {
       email: extractedEmail,
     },
-  });  
+  });
   await prisma.$disconnect();
 
   return (
     <div className="h-screen">
-      <div className="relative h-32 xl:h-48 bg-neutral-800/80 ">
+      <div className="relative h-32 xl:h-48 bg-neutral-800/80">
         <Image
           src={imgSrc}
           alt="Profile Icon"
@@ -30,19 +30,17 @@ export default async function Page({ params }: { params: { email: string } }) {
           className="w-24 h-24 rounded-full object-cover absolute bottom-0 left-4 transform translate-y-1/2 border-4 border-black"
         />
       </div>
-      <div className="p-6 pt-12 border-b border-r border-neutral-800 ">
-        <div className="flex flex-col space-y-1">
-          <p className="text-2xl font-bold">{user?.fullname}</p>
-          <p className="text-md text-neutral-500">@{user?.username}</p>
-          <div className="tweet space-x-2">
-            <FiCalendar />
-            <p>Date Joined: </p>
-            <p>
-              {user?.dateJoined
-                ? formatDate(user.dateJoined)
-                : "Date not available"}
-            </p>
-          </div>
+      <div className="p-6 pt-12 border-b border-r border-neutral-800 card mb-6 flex flex-col space-y-1">
+        <p className="text-2xl font-bold">{user?.fullname}</p>
+        <p className="text-md text-neutral-500">@{user?.username}</p>
+        <div className="tweet space-x-2">
+          <FiCalendar />
+          <p>Date Joined: </p>
+          <p>
+            {user?.dateJoined
+              ? formatDate(user.dateJoined)
+              : "Date not available"}
+          </p>
         </div>
       </div>
       <Tweets />

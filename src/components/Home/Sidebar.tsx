@@ -64,12 +64,12 @@ export default async function Sidebar() {
 
         <a
           href="/home/post"
-          className="element inline-flex items-center justify-center bg-red-500 hover: w-full font-bold text-md hover: py-3 mt-2 px-8 rounded-full transition-all duration-150"
+          className="element inline-flex items-center justify-center bg-red-600 hover: w-full font-bold text-md hover: py-3 mt-2 px-8 rounded-full transition-all duration-150"
         >
           Post
         </a>
       </div>
-      <a className="sidebar2 border border-neutral-800" href={url}>
+      <a className="sidebar2 hover:shadow-lg hover:shadow-red-600 border border-red-900 hover:text-red-600" href={url}>
         <Image
           src={imgSrc}
           alt="Profile Icon"
@@ -79,7 +79,7 @@ export default async function Sidebar() {
         />
         <div>
           <p className="text-md">{session?.user?.name}</p>
-          <p className="text-md text-neutral-500 hover:text-red-600">
+          <p className="text-md text-neutral-500">
             View Profile
           </p>
         </div>

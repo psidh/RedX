@@ -38,10 +38,10 @@ const TweetPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center poster">
       <form
         onSubmit={handleTweetSubmit}
-        className="bg-neutral-900 p-8 rounded-lg shadow-md w-96"
+        className="border-t border-red-500 p-8 rounded-xl shadow-red-500 shadow-xl w-96"
       >
         <h1 className="text-2xl font-bold mb-6">Post a Tweet</h1>
         <div className="mb-4">
@@ -50,7 +50,7 @@ const TweetPage = () => {
           </label>
           <textarea
             id="content"
-            className="mt-1 p-2 w-full bg-neutral-800 border border-neutral-700 rounded focus:outline-none"
+            className="mt-1 p-2 w-full bg-neutral-900 border border-neutral-700 rounded focus:outline-none"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             required
@@ -59,7 +59,7 @@ const TweetPage = () => {
         </div>
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-red-500 hover:bg-red-700 rounded  font-bold"
+          className="w-full py-2 px-4 bg-red-600 hover:bg-red-700 rounded  font-bold"
         >
           Tweet
         </button>

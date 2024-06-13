@@ -26,7 +26,7 @@ export default async function Sidebar() {
   prisma.$disconnect();
 
   return (
-    <div className="flex flex-col justify-between items-center py-12 h-[100vh] border-r border-neutral-800/80">
+    <div className="fixed top-0 left-0 hidden lg:flex lg:w-[19%] flex-col justify-between items-center py-12 h-[100vh] border-r border-neutral-800/80">
       <div className="sidebar1">
         <a href="/home" className="element space-x-8">
           <GoHomeFill className="text-3xl" />

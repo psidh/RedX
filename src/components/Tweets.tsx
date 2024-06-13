@@ -7,6 +7,7 @@ import { FiCalendar } from "react-icons/fi";
 import { FiHeart } from "react-icons/fi";
 import { LuMessageSquare } from "react-icons/lu";
 import Image from "next/image";
+import Delete from "./Delete";
 
 interface Tweet {
   id: string;
@@ -81,6 +82,7 @@ export default function Tweets() {
                   <LuMessageSquare />
                   <p>{tweet.comment}</p>
                 </div>
+                <Delete tweet={tweet} />
               </div>
             </div>
           ))}

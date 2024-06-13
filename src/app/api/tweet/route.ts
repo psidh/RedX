@@ -69,12 +69,22 @@ export async function POST(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   try {
     const { id } = await req.json();
-    const tweet = await prisma.tweet.delete({
-      where: {
-        id,
-      },
+    
+    
+    const tweet = await prisma.tweet.findUnique({
+      where: { id },
     });
-    return NextResponse.json(tweet);
+
+    if (!tweet) {
+      return NextResponse.json({ error: "Tweet not found" }, { status: 404 });
+    }
+
+    
+    await prisma.tweet.delete({
+      where: { id },
+    });
+
+    return NextResponse.json({ message: "Tweet deleted successfully" }, { status: 200 });
   } catch (error) {
     console.error("Error deleting tweet:", error);
     return NextResponse.json(

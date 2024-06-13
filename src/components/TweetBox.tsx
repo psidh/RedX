@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 export default function TweetBox() {
   const session = useSession();
   const imgSrc = session?.data?.user?.image || "";
-  const url = "/home/profile/email" + session?.data?.user?.email;
+  const url = "/home/profile/email?" + session?.data?.user?.email;
 
   const [content, setContent] = useState("");
   const router = useRouter();

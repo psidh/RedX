@@ -31,7 +31,7 @@ export default async function Page({ email }: any) {
       </div>
       <div className="p-6 pt-12 border-b border-r border-neutral-800 ">
         <div className="flex flex-col">
-          <p className="text-2xl font-bold">{session?.user?.name}</p>
+          <p className="text-2xl font-bold">{user?.username}</p>
           <p className="text-md text-neutral-500">@{username}</p>
         </div>
       </div>

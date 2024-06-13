@@ -5,8 +5,8 @@ const prisma = new PrismaClient();
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { username, email } = body;
-    if (!username) {
+    const { username, email, fullname } = body;
+    if (!username || !fullname || !email) {
       return NextResponse.json(
         { error: "Name and username are required" },
         { status: 400 }
@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
       data: {
         username,
         email,
+        fullname,
         dateJoined: new Date(),
       },
     });

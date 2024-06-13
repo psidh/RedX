@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 const SignUp = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
+  const [fullname, setFullname] = useState("");
   const session = useSession();
   const email = session.data?.user?.email;
 
@@ -14,7 +15,7 @@ const SignUp = () => {
     e.preventDefault();
     toast.loading("Signing up...");
 
-    if (!username) {
+    if (!username || !fullname) {
       toast.error("Please enter a username");
       return;
     }
@@ -24,7 +25,7 @@ const SignUp = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, email }),
+        body: JSON.stringify({ username, email, fullname }),
       });
 
       if (!res.ok) {
@@ -59,6 +60,19 @@ const SignUp = () => {
               className="mt-1 p-2 w-full bg-neutral-800 border border-neutral-700 rounded"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="fullname" className="block text-sm font-medium">
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="fullname"
+              className="mt-1 p-2 w-full bg-neutral-800 border border-neutral-700 rounded"
+              value={fullname}
+              onChange={(e) => setFullname(e.target.value)}
               required
             />
           </div>

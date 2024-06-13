@@ -37,14 +37,27 @@ export default function Tweets() {
         } catch (err) {
           setError("Server is down");
           toast.error("Server is down");
-        } finally {
-          toast.dismiss();
         }
       };
       fetchTweets();
     }
   }, [sessionEmail]);
 
+  const handleLike = async (id: string) => {
+    try {
+      console.log("id", id);
+      
+      const response = await axios.post("/api/tweet/like", { id });
+      console.log(response);
+      
+      if (response.data.message) {
+        toast.success("Liked");
+      }
+      return response;
+    } catch (err) {
+      toast.error("Error liking the tweet");
+    }
+  };
 
   return (
     <div className="flex items-center justify-start">
@@ -56,7 +69,10 @@ export default function Tweets() {
         )}
         <div>
           {tweets.map((tweet) => (
-            <div key={tweet.id} className="p-4 border-b border-r border-neutral-800">
+            <div
+              key={tweet.id}
+              className="p-4 border-b border-r border-neutral-800"
+            >
               <div className="flex items-center justify-start space-x-4">
                 <div>
                   <Image
@@ -77,7 +93,7 @@ export default function Tweets() {
                   <FiCalendar />
                   <p>{formatDate(new Date(tweet?.date))}</p>
                 </div>
-                <div className="tweet space-x-2">
+                <div className="tweet space-x-2 cursor-pointer" onClick={()=> handleLike(tweet.id)}>
                   <FiHeart /> <p>{tweet.likeCount}</p>
                 </div>
                 <div className="tweet space-x-2">

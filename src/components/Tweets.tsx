@@ -45,7 +45,7 @@ export default function Tweets() {
   }, [sessionEmail]);
 
   const formatDate = (dateString : string) => {
-    const options = { day: '2-digit', month: 'short', year: 'numeric' };
+    const options: any = { day: '2-digit', month: 'short', year: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
 

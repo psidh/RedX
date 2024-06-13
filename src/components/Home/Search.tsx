@@ -42,7 +42,7 @@ export default function Search() {
       </div>
       <div>
         {results ? (
-          <a href={`/home/profile/email?${results.user.email}`} target="_blank">
+          <a href={`http://localhost:3000/home/search/username?${results?.user?.username}`} target="_blank">
             <div className="rounded-xl bg-neutral-800 p-4 flex flex-col items-start justify-start">
               <h1 className="text-xl font-semibold mb-2">
                 @{results.user.username}

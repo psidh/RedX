@@ -3,6 +3,8 @@ import { NEXT_AUTH_CONFIG } from "@/lib/auth";
 import Tweets from "@/components/Tweets";
 import Image from "next/image";
 import { PrismaClient } from "@prisma/client";
+import { FiCalendar } from "react-icons/fi";
+import { formatDate } from "@/lib/formateDate";
 
 export default async function Page({ email }: any) {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
@@ -15,7 +17,6 @@ export default async function Page({ email }: any) {
     },
   });
 
-  const username = user?.username;
   prisma.$disconnect();
 
   return (
@@ -30,9 +31,18 @@ export default async function Page({ email }: any) {
         />
       </div>
       <div className="p-6 pt-12 border-b border-r border-neutral-800 ">
-        <div className="flex flex-col">
-          <p className="text-2xl font-bold">{user?.username}</p>
-          <p className="text-md text-neutral-500">@{username}</p>
+        <div className="flex flex-col space-y-1">
+          <p className="text-2xl font-bold">{user?.fullname}</p>
+          <p className="text-md text-neutral-500">@{user?.username}</p>
+          <div className="tweet space-x-2">
+            <FiCalendar />
+            <p>Date Joined: </p>
+            <p>
+              {user?.dateJoined
+                ? formatDate(user.dateJoined)
+                : "Date not available"}
+            </p>
+          </div>
         </div>
       </div>
       <Tweets />

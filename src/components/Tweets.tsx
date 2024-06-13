@@ -8,6 +8,7 @@ import { FiHeart } from "react-icons/fi";
 import { LuMessageSquare } from "react-icons/lu";
 import Image from "next/image";
 import Delete from "./Delete";
+import { formatDate } from "@/lib/formateDate";
 
 interface Tweet {
   id: string;
@@ -44,11 +45,6 @@ export default function Tweets() {
     }
   }, [sessionEmail]);
 
-  const formatDate = (dateString : string) => {
-    const options: any = { day: '2-digit', month: 'short', year: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
-  };
-
 
   return (
     <div className="flex items-center justify-start">
@@ -79,7 +75,7 @@ export default function Tweets() {
               <div className="tweet-box text-sm">
                 <div className="tweet space-x-2">
                   <FiCalendar />
-                  <p>{formatDate(tweet.date)}</p>
+                  <p>{formatDate(new Date(tweet?.date))}</p>
                 </div>
                 <div className="tweet space-x-2">
                   <FiHeart /> <p>{tweet.likeCount}</p>

@@ -65,13 +65,13 @@ export default function TweetBox() {
           onChange={(e) => setContent(e.target.value)}
         />
         <button
-          className="bg-blue-500 w-[25%]
-          hover:bg-blue-500/90 text-center font-bold text-md 
+          className="bg-red-500 w-[25%]
+          hover:bg-red-500/90 text-center font-bold text-md 
            py-2 mt-2 px-4 rounded-full
          transition-all duration-150"
           onClick={handleTweetSubmit}
         >
-          Tweet
+          Post
         </button>
       </div>
     </div>

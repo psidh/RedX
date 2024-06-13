@@ -49,15 +49,15 @@ export default function Tweets() {
 
   return (
     <div className="flex items-center justify-start">
-      <div className="w-full rounded-lg shadow-md">
+      <div className="w-full rounded-lg mb-12">
         {error && (
           <div className="mt-4 text-red-600 flex flex-col items-center justify-center">
             {error}
           </div>
         )}
-        <div className="my-6">
+        <div>
           {tweets.map((tweet) => (
-            <div key={tweet.id} className="p-4 mb-4 rounded-md shadow">
+            <div key={tweet.id} className="p-4 border-b border-neutral-800">
               <div className="flex items-center justify-start space-x-4">
                 <div>
                   <Image
@@ -89,6 +89,9 @@ export default function Tweets() {
             </div>
           ))}
         </div>
+        <h1 className="w-full text-center mt-12 mb-24 text-red-600 italic">
+          End of the tweets
+        </h1>
       </div>
     </div>
   );

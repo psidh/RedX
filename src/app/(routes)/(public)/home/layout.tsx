@@ -1,4 +1,4 @@
-import SearchBar from "@/components/Home/SearchBar";
+import Trending from "@/components/Home/Trending";
 import Sidebar from "@/components/Home/Sidebar";
 import BottomBar from "@/components/Home/BottomBar";
 
@@ -16,7 +16,7 @@ export default function RootLayout({
         <div className="w-full lg:w-[60%] lg:ml-[17.83%]">{children}</div>
         <div className="hidden lg:flex lg:w-[28%]">
           <div className="flex flex-col justify-start items-center w-full">
-            <SearchBar />
+            <Trending />
           </div>
         </div>
       </div>

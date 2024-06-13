@@ -18,7 +18,9 @@ export default async function ProfileBar() {
         />
         <div>
           <p className="text-md">{session?.user?.name}</p>
-          <p className="text-md text-neutral-500 hover:text-blue-600 text-md">View Profile</p>
+          <p className="text-md text-neutral-500 hover:text-red-600 text-md">
+            View Profile
+          </p>
         </div>
       </a>
     </div>

@@ -59,7 +59,7 @@ const TweetPage = () => {
         </div>
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded  font-bold"
+          className="w-full py-2 px-4 bg-red-500 hover:bg-red-700 rounded  font-bold"
         >
           Tweet
         </button>

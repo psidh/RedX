@@ -1,4 +1,4 @@
-import SearchBar from "@/components/Home/SearchBar";
+import Trending from "@/components/Home/Trending";
 import Sidebar from "@/components/Home/Sidebar";
 import Main from "@/components/Main";
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
           <Main />
         </div>
         <div className="w-[28%]">
-          <SearchBar />
+          <Trending />
         </div>
       </div>
     </>

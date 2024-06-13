@@ -2,10 +2,20 @@ import { getServerSession } from "next-auth";
 import { NEXT_AUTH_CONFIG } from "@/lib/auth";
 import Tweets from "@/components/Tweets";
 import Image from "next/image";
+import { PrismaClient } from "@prisma/client";
 
 export default async function Page({ email }: any) {
   const session = await getServerSession(NEXT_AUTH_CONFIG);
   const imgSrc = session?.user?.image || "";
+  const prisma = new PrismaClient();
+
+  const user = await prisma.user.findFirst({
+    where: {
+      email: email,
+    },
+  });
+
+  const username = user?.username;
 
   return (
     <div className="h-screen">
@@ -21,7 +31,7 @@ export default async function Page({ email }: any) {
       <div className="p-6 pt-12 border-b border-neutral-800">
         <div className="flex flex-col">
           <p className="text-2xl font-bold">{session?.user?.name}</p>
-          <p className="text-md text-[#7d7d7d]">{session?.user?.email}</p>
+          <p className="text-md text-neutral-500">@{username}</p>
         </div>
       </div>
       <Tweets />

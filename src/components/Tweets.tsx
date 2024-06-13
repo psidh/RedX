@@ -44,6 +44,12 @@ export default function Tweets() {
     }
   }, [sessionEmail]);
 
+  const formatDate = (dateString : string) => {
+    const options = { day: '2-digit', month: 'short', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+  };
+
+
   return (
     <div className="flex items-center justify-start">
       <div className="w-full rounded-lg mb-12">
@@ -69,11 +75,11 @@ export default function Tweets() {
                   {session.data?.user?.name}
                 </h1>
               </div>
-              <p className="text-neutral-500 my-4 text-xl">{tweet.content}</p>
-              <div className="tweet-box">
+              <p className="text-neutral-300 my-8 text-xl">{tweet.content}</p>
+              <div className="tweet-box text-sm">
                 <div className="tweet space-x-2">
                   <FiCalendar />
-                  <p>{new Date(tweet.date).toLocaleString()}</p>
+                  <p>{formatDate(tweet.date)}</p>
                 </div>
                 <div className="tweet space-x-2">
                   <FiHeart /> <p>{tweet.likeCount}</p>

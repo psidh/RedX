@@ -35,11 +35,11 @@
   }
 }
 .tweet {
-  @apply inline-flex items-center text-neutral-300  text-lg;
+  @apply inline-flex items-center text-neutral-500 ;
 }
 
 .tweet-box {
-  @apply mt-2 text-neutral-200 text-sm flex justify-start items-center space-x-8;
+  @apply mt-2 text-neutral-500 text-sm flex justify-start items-center space-x-8;
 }
 
 .tweet-box-large {
